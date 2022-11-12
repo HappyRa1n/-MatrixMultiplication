@@ -2,6 +2,8 @@
 #include <vector>
 #include <random>
 #include "Standart.h"
+#include <string>
+#include <fstream>
 using namespace std;
 
 void show_matrix(vector <vector <float>> matrix) {
@@ -13,7 +15,7 @@ void show_matrix(vector <vector <float>> matrix) {
 	}
 }
 
-vector <vector <double>> mul_matrix(vector <vector <double>> first_matrix, vector <vector <double>> second_matrix) {
+vector<vector <double>> mul_matrix(const vector <vector <double>>& first_matrix, const vector <vector <double>>& second_matrix) {
 	int n = first_matrix.size();
 	vector <vector <double>> result_matrix;
 	for (int i = 0; i < n; i++) {
@@ -28,3 +30,38 @@ vector <vector <double>> mul_matrix(vector <vector <double>> first_matrix, vecto
 	}
 	return result_matrix;
 }
+
+void Start_Standart(string in, string out) {
+	ifstream fin(in);
+	ofstream fout(out);
+	int n;
+	fin >> n;
+	vector<vector <double>> a;
+	vector<vector <double>> b;
+
+	for (int i = 0; i < n; i++) {
+		a.push_back(vector <double>());
+		for (int j = 0; j < n; j++) {
+			double var;
+			fin >> var;
+			a[i].push_back(var);
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		b.push_back(vector <double>());
+		for (int j = 0; j < n; j++) {
+			double var;
+			fin >> var;
+			b[i].push_back(var);
+		}
+	}
+	vector<vector <double>> c = mul_matrix(a, b);
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			fout << c[i][j] << " ";
+		}
+		fout <<endl;
+	}
+	fin.close();
+	fout.close();
+};
