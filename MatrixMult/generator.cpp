@@ -1,8 +1,9 @@
 #include "Generator.h"
+#include "Standart.h"
 #include <random>
 #include <fstream>
 #include <iostream>
-#include <iomanip> 
+#include <iomanip>
 
 using namespace std;
 int sign()
@@ -11,20 +12,21 @@ int sign()
     if (rnd == 1)  return 1;
     else return -1;
 }
-void f()
+void Test_generator()
 {
     int n;
     cin >> n;
-    ofstream fout("output.txt");
+    ofstream fout("input15.txt");
     vector<vector<double>> a(n, (vector<double>(n)));
     vector<vector<double>> b(n, (vector<double>(n)));
-
+    int DATA_MAX = 2000000, DATA_MIN = -2000000;
 
     for (int i = 0; i < a.size(); ++i)
         for (int j = 0; j < a[i].size(); ++j)
         {
-            a[i][j] = rand() % 2000000 * sign();
-            b[i][j] = rand() % 2000000 * sign();
+            a[i][j] = (double)rand() / RAND_MAX * (DATA_MAX - DATA_MIN) + DATA_MIN;
+            Sleep(2);
+            b[i][j] = (double)rand() / RAND_MAX * (DATA_MAX - DATA_MIN) + DATA_MIN;
         }
 
     fout << n << '\n';

@@ -1,3 +1,3 @@
 #pragma once
-void f();
+void Test_generator();
 int sign();
