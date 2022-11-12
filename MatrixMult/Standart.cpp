@@ -15,11 +15,11 @@ void show_matrix(vector <vector <float>> matrix) {
 
 vector <vector <double>> mul_matrix(vector <vector <double>> first_matrix, vector <vector <double>> second_matrix) {
 	int n = first_matrix.size();
-	vector <vector <float>> result_matrix;
+	vector <vector <double>> result_matrix;
 	for (int i = 0; i < n; i++) {
-		result_matrix.push_back(vector <float>());
+		result_matrix.push_back(vector <double>());
 		for (int j = 0; j < n; j++) {
-			float sum = 0;
+			double sum = 0;
 			for (int k = 0; k < n; k++) {
 				sum += first_matrix[i][k] * second_matrix[k][j];
 			}

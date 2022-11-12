@@ -1,0 +1,8 @@
+﻿  pch.cpp
+  UnitTest1.cpp
+     Creating library D:\ПГНИУ2\3 курс\алгоритмы\Умножение матриц\MatrixMult\Release\UnitTest1.lib and object D:\ПГНИУ2\3 курс\алгоритмы\Умножение матриц\MatrixMult\Release\UnitTest1.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 21 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  UnitTest1.vcxproj -> D:\ПГНИУ2\3 курс\алгоритмы\Умножение матриц\MatrixMult\Release\UnitTest1.dll
