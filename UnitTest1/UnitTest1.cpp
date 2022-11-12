@@ -5,11 +5,15 @@
 
 #include "..\MatrixMult\Standart.h"
 #include "..\MatrixMult\Standart.cpp"
+#include "..\MatrixMult\Shtrassen.h"
+#include "..\MatrixMult\Shtrassen.cpp"
 #include "..\MatrixMult\MatrixMult.h"
 #include "..\MatrixMult\MatrixMult.cpp"
+
 #include <filesystem>
+#include <time.h> 
 
-
+//ofstream out("..\\input.")
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 
@@ -55,8 +59,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+			
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T2)
@@ -67,8 +81,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds<<endl;
+			fout.close();                          // закрываем файл
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T3)
@@ -279,7 +303,7 @@ namespace UnitTest1
 			create_answer(inp, out);
 			Assert::IsTrue(check_t(ans, out));
 		}
-		TEST_METHOD(T19)
+		/*TEST_METHOD(T19)
 		{
 
 			string num_t = "19";
@@ -304,6 +328,6 @@ namespace UnitTest1
 
 			create_answer(inp, out);
 			Assert::IsTrue(check_t(ans, out));
-		}
+		}*/
 	};
 }

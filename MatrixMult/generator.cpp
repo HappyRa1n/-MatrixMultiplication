@@ -25,7 +25,6 @@ void Test_generator()
         for (int j = 0; j < a[i].size(); ++j)
         {
             a[i][j] = (double)rand() / RAND_MAX * (DATA_MAX - DATA_MIN) + DATA_MIN;
-            Sleep(2);
             b[i][j] = (double)rand() / RAND_MAX * (DATA_MAX - DATA_MIN) + DATA_MIN;
         }
 
