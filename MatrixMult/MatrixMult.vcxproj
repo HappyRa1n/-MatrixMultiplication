@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="generator.cpp" />
     <ClCompile Include="MatrixMult.cpp" />
     <ClCompile Include="Standart.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Generator.h" />
     <ClInclude Include="MatrixMult.h" />
     <ClInclude Include="Standart.h" />
   </ItemGroup>
