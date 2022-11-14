@@ -608,3 +608,145 @@ void Start_Shtrassen(string inp, string out)
         delete[] C[i];
     delete[] C;
 }
+
+vector <vector <double>> Start_Shtrassen(const vector <vector <double>>& first_matrix, const vector <vector <double>>& second_matrix)
+{
+
+    int n=first_matrix.size();
+    int n_old;
+    n_old = n;
+    n = pow(2, ceil(log2(n)));
+    double** A = initializeMatrix(n);
+    double** B = initializeMatrix(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            A[i][j] = 0;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            B[i][j] = 0;
+        }
+    }
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            double var;
+            A[i][j] = first_matrix[i][j];
+        }
+    }
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            double var;
+            B[i][j] = second_matrix[i][j];
+        }
+    }
+
+
+    double** C = initializeMatrix(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            C[i][j] = 0;
+        }
+    }
+    C = strassenMultiply(A, B, n);
+    double** ANSWER = initializeMatrix(n_old);
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            ANSWER[i][j] = C[i][j];
+        }
+    }
+    std::vector<vector<double>> ans;
+    for (int i = 0; i < n_old; i++) {
+        ans.push_back(std::vector<double>());
+        for (int j = 0; j < n_old; j++) {
+            ans[i].push_back(ANSWER[i][j]);
+        }
+    }
+    for (int i = 0; i < n_old; i++)
+        delete[] ANSWER[i];
+    delete[] ANSWER;
+
+    for (int i = 0; i < n; i++)
+        delete[] A[i];
+    delete[] A;
+
+    for (int i = 0; i < n; i++)
+        delete[] B[i];
+    delete[] B;
+
+    for (int i = 0; i < n; i++)
+        delete[] C[i];
+    delete[] C;
+    return ans;
+}
+
+vector <vector <double>> Start_ShtrassenBest(const vector <vector <double>>& first_matrix, const vector <vector <double>>& second_matrix)
+{
+
+    int n = first_matrix.size();
+    int n_old;
+    n_old = n;
+    n = pow(2, ceil(log2(n)));
+    double** A = initializeMatrix(n);
+    double** B = initializeMatrix(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            A[i][j] = 0;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            B[i][j] = 0;
+        }
+    }
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            double var;
+            A[i][j] = first_matrix[i][j];
+        }
+    }
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            double var;
+            B[i][j] = second_matrix[i][j];
+        }
+    }
+
+
+    double** C = initializeMatrix(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            C[i][j] = 0;
+        }
+    }
+    C = strassenMultiply_Best(A, B, n);
+    double** ANSWER = initializeMatrix(n_old);
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            ANSWER[i][j] = C[i][j];
+        }
+    }
+    std::vector<vector<double>> ans;
+    for (int i = 0; i < n_old; i++) {
+        ans.push_back(std::vector<double>());
+        for (int j = 0; j < n_old; j++) {
+            ans[i].push_back(ANSWER[i][j]);
+        }
+    }
+    for (int i = 0; i < n_old; i++)
+        delete[] ANSWER[i];
+    delete[] ANSWER;
+
+    for (int i = 0; i < n; i++)
+        delete[] A[i];
+    delete[] A;
+
+    for (int i = 0; i < n; i++)
+        delete[] B[i];
+    delete[] B;
+
+    for (int i = 0; i < n; i++)
+        delete[] C[i];
+    delete[] C;
+    return ans;
+}

@@ -6,7 +6,7 @@
 #include <fstream>
 using namespace std;
 
-void show_matrix(vector <vector <float>> matrix) {
+void show_matrix(vector <vector <double>> matrix) {
 	for (int i = 0; i < matrix.size(); i++) {
 		for (int j = 0; j < matrix[i].size(); j++) {
 			cout << matrix[i][j] << " ";

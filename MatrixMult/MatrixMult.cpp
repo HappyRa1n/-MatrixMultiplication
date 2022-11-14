@@ -22,7 +22,7 @@ void create_answer(string in, string out) {
 	}
 };
 void use_my(){
-	cout << "hand - 0, auto-1, file -2";
+	cout << "hand - 0, auto-1, file -2" << endl;;
 	int type_inp;
 	cin >> type_inp;
 	cout << "choose the algorithm" << endl;
@@ -36,16 +36,93 @@ void use_my(){
 	
 	switch (type_inp) {
 	case 0: {
-		cout << "input n";
+		cout << "input n" << endl;;
 		int n;
 		cin >> n;
+
+		std::vector<vector<double>> A;
+		std::vector<vector<double>> B;
+		std::vector<vector<double>> C;
+		cout << "Input A" << endl;
+		for (int i = 0; i < n; i++) {
+			A.push_back(std::vector<double>());
+			for (int j = 0; j < n; j++) {
+				double tmp_d;
+				cin >> tmp_d;
+				A[i].push_back(tmp_d);
+			}
+		}
+		cout << "Input B" << endl;
+		for (int i = 0; i < n; i++) {
+			B.push_back(std::vector<double>());
+			for (int j = 0; j < n; j++) {
+				double tmp_d;
+				cin >> tmp_d;
+				B[i].push_back(tmp_d);
+			}
+		}
+
+		switch (alg)
+		{
+		case 1: {
+			C = mul_matrix(A, B);
+			show_matrix(C);
+			break;
+		}
+		case 2:
+		{
+			C = Start_Shtrassen(A, B);
+			show_matrix(C);
+			break;
+		}
+		case 3: {
+			C = Start_ShtrassenBest(A, B);
+			show_matrix(C);
+			break;
+		}
+		default:
+			break;
+		}
 		break;
 	}
 	case 1:
 	{
-		cout << "input n";
+		cout << "input n"<<endl;
 		int n;
 		cin >> n;
+		std::vector<vector<double>> A;
+		std::vector<vector<double>> B;
+		std::vector<vector<double>> C;
+		for (int i = 0; i < n; i++) {
+			A.push_back(std::vector<double>());
+			B.push_back(std::vector<double>());
+			for (int j = 0; j < n; j++) {
+				A[i].push_back(GenDouble());
+				B[i].push_back(GenDouble());
+			}
+		}
+	   
+		switch (alg)
+		{
+		case 1: {
+			C= mul_matrix(A,B);
+			show_matrix(C);
+			break;
+		}
+		case 2:
+		{
+			C = Start_Shtrassen(A, B);
+			show_matrix(C);
+			break;
+		}
+		case 3: {
+			C = Start_ShtrassenBest(A, B);
+			show_matrix(C);
+			break;
+		}
+		default:
+			break;
+		}
 		break;
 	}
 	case 2:
@@ -80,6 +157,6 @@ void use_my(){
 int main()
 {
 	//OutGen();
-	CorrectTests();
-	//use_my();
+	//CorrectTests();
+	use_my();
 }

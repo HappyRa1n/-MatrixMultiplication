@@ -12,6 +12,10 @@ int sign()
     if (rnd == 1)  return 1;
     else return -1;
 }
+int DATA_MAX = 2000000, DATA_MIN = -2000000;
+double GenDouble() {
+    return (double)rand() / RAND_MAX * (DATA_MAX - DATA_MIN) + DATA_MIN;
+}
 void f(int n, ofstream& fout)
 {
     //int n;
@@ -19,7 +23,7 @@ void f(int n, ofstream& fout)
 
     vector<vector<double>> a(n, (vector<double>(n)));
     vector<vector<double>> b(n, (vector<double>(n)));
-    int DATA_MAX = 2000000, DATA_MIN = -2000000;
+    
 
     for (int i = 0; i < a.size(); ++i)
         for (int j = 0; j < a[i].size(); ++j)
