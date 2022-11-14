@@ -5,6 +5,8 @@
 
 #include "..\MatrixMult\Standart.h"
 #include "..\MatrixMult\Standart.cpp"
+#include "..\MatrixMult\Generator.h"
+#include "..\MatrixMult\generator.cpp"
 #include "..\MatrixMult\Shtrassen.h"
 #include "..\MatrixMult\Shtrassen.cpp"
 #include "..\MatrixMult\MatrixMult.h"
@@ -77,7 +79,7 @@ namespace UnitTest1
 		{
 			string num_t = "2";
 
-			string inp = "../../test/input" + num_t + ".txt";
+			string inp = "../../test/input"+num_t+".txt";
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
@@ -85,14 +87,14 @@ namespace UnitTest1
 			create_answer(inp, out);
 			clock_t end = clock();
 			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
-
 			std::ifstream fin(inp);
 			int n;
 			fin >> n;
 			std::ofstream fout;                    //создаем поток 
 			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
-			fout << n << " " << seconds<<endl;
+			fout << n << " " << seconds << endl;;
 			fout.close();                          // закрываем файл
+			
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T3)
@@ -104,8 +106,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T4)
@@ -117,8 +129,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T5)
@@ -130,8 +152,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T6)
@@ -143,8 +175,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T7)
@@ -156,8 +198,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T8)
@@ -169,8 +221,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T9)
@@ -182,8 +244,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T10)
@@ -195,8 +267,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T11)
@@ -208,8 +290,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T12)
@@ -221,8 +313,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T13)
@@ -234,8 +336,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T14)
@@ -247,8 +359,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T15)
@@ -260,8 +382,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T16)
@@ -273,8 +405,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T17)
@@ -286,8 +428,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T18)
@@ -299,11 +451,21 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
-		/*TEST_METHOD(T19)
+		TEST_METHOD(T19)
 		{
 
 			string num_t = "19";
@@ -312,8 +474,18 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
 		}
 		TEST_METHOD(T20)
@@ -325,9 +497,1031 @@ namespace UnitTest1
 			string ans = "../../test/output" + num_t + ".txt";
 
 			string out = "../../test/answer/output.txt";
-
+			clock_t start = clock();
 			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
 			Assert::IsTrue(check_t(ans, out));
-		}*/
+		}
+		TEST_METHOD(T21)
+		{
+
+			string num_t = "21";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T22)
+		{
+
+			string num_t = "22";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T23)
+		{
+
+			string num_t = "23";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T24)
+		{
+
+			string num_t = "24";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T25)
+		{
+
+			string num_t = "25";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T26)
+		{
+
+			string num_t = "26";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T27)
+		{
+
+			string num_t = "27";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T28)
+		{
+
+			string num_t = "28";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T29)
+		{
+
+			string num_t = "29";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T30)
+		{
+
+			string num_t = "30";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T31)
+		{
+
+			string num_t = "31";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T32)
+		{
+
+			string num_t = "32";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T33)
+		{
+
+			string num_t = "33";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T34)
+		{
+
+			string num_t = "34";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T35)
+		{
+
+			string num_t = "35";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T36)
+		{
+
+			string num_t = "36";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T37)
+		{
+
+			string num_t = "37";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T38)
+		{
+
+			string num_t = "38";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T39)
+		{
+
+			string num_t = "39";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T40)
+		{
+
+			string num_t = "40";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T41)
+		{
+
+			string num_t = "41";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T42)
+		{
+
+			string num_t = "42";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T43)
+		{
+
+			string num_t = "43";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T44)
+		{
+
+			string num_t = "44";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T45)
+		{
+
+			string num_t = "45";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T46)
+		{
+
+			string num_t = "46";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T47)
+		{
+
+			string num_t = "47";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T48)
+		{
+
+			string num_t = "48";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T49)
+		{
+
+			string num_t = "49";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T50)
+		{
+
+			string num_t = "50";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T51)
+		{
+
+			string num_t = "51";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T52)
+		{
+
+			string num_t = "52";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T53)
+		{
+
+			string num_t = "53";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T54)
+		{
+
+			string num_t = "54";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T55)
+		{
+
+			string num_t = "55";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T56)
+		{
+
+			string num_t = "56";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T57)
+		{
+
+			string num_t = "57";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T58)
+		{
+
+			string num_t = "58";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T59)
+		{
+
+			string num_t = "59";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T60)
+		{
+
+			string num_t = "60";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T61)
+		{
+
+			string num_t = "61";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T62)
+		{
+
+			string num_t = "62";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T63)
+		{
+
+			string num_t = "63";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
+		TEST_METHOD(T64)
+		{
+
+			string num_t = "64";
+
+			string inp = "../../test/input" + num_t + ".txt";
+			string ans = "../../test/output" + num_t + ".txt";
+
+			string out = "../../test/answer/output.txt";
+			clock_t start = clock();
+			create_answer(inp, out);
+			clock_t end = clock();
+			double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+			std::ifstream fin(inp);
+			int n;
+			fin >> n;
+			std::ofstream fout;                    //создаем поток 
+			fout.open("../../../tests.txt", std::ios::app);  // открываем файл для записи в конец
+			fout << n << " " << seconds << endl;;
+			fout.close();                          // закрываем файл
+
+			Assert::IsTrue(check_t(ans, out));
+		}
 	};
 }
