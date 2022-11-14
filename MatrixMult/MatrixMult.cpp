@@ -8,7 +8,7 @@
 #include "Shtrassen.h"
 
 using namespace std;
-int ver_alg = 1;//1- стандарт, 2- штрасcен, 3 - совместный
+int ver_alg = 2;//1- стандарт, 2- штрасcен, 3 - совместный
 void create_answer(string in, string out) {
 	
 	if (ver_alg == 1) {
@@ -39,38 +39,47 @@ void use_my(){
 		cout << "input n";
 		int n;
 		cin >> n;
+		break;
 	}
 	case 1:
 	{
 		cout << "input n";
 		int n;
 		cin >> n;
-
+		break;
 	}
 	case 2:
 	{
-		switch (ver_alg)
+
+		clock_t start = clock();
+	
+		switch (alg)
 		{
 		case 1: {
 			Start_Standart("input.txt", "output.txt");
+			break;
 		}
 		case 2:
 		{
 			Start_Shtrassen("input.txt", "output.txt");
+			break;
 		}
 		case 3: {
 			Start_ShtrassenBest("input.txt", "output.txt");
+			break;
 		}
 		default:
 			break;
 		}
+		clock_t end = clock();
+		double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+		cout << "ALL " << seconds;
 	}
     }
 };
 int main()
 {
 	//OutGen();
-	//CorrectTests();
-	
-
+	CorrectTests();
+	//use_my();
 }

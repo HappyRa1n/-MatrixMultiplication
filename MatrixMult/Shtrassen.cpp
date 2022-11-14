@@ -5,325 +5,606 @@
 #include "Shtrassen.h"
 using namespace std;
 
-void show_matrix(vector <vector <double>> matrix) {
-	for (int i = 0; i < matrix.size(); i++) {
-		for (int j = 0; j < matrix[i].size(); j++) {
-			cout << matrix[i][j] << " ";
-		}
-		cout << "\n";
-	}
-	cout << "\n";
+double** initializeMatrix(int n) {
+	double** temp = new double* [n];
+	for (int i = 0; i < n; i++)
+		temp[i] = new double[n];
+	return temp;
 }
 
-vector <vector<double>> extend_matrix(vector <vector<double>> matrix) {
-	int n = matrix.size();
-	int size = n;
-	while ((size & (size - 1)) != 0) {
-		size += 1;
-	}
-
-	for (int i = 0; i < size; i++) {
-		if (i >= n) {
-			matrix.push_back(vector <double>());
-			for (int j = 0; j < size; j++) {
-				matrix[i].push_back(0);
-			}
-		}
-		else {
-			for (int j = 0; j < size - n; j++) {
-				matrix[i].push_back(0);
-			}
-		}
-	}
-
-	return matrix;
+void input(int** M, int n) {
+	std::cout << "Enter matrix: " << std::endl;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			std::cin >> M[i][j];
+	std::cout << std::endl;
 }
 
-void split_matrix(vector<vector <double>> matrix, vector<vector <double>>& m1, vector<vector <double>>& m2, vector<vector <double>>& m3, vector<vector <double>>& m4) {
-	int n = matrix.size();
-	int middle = n >> 1;
+void printMatrix(int** M, int n) {
 	for (int i = 0; i < n; i++) {
-		if (i < middle) {
-			m1.push_back(vector <double>());
-			m2.push_back(vector <double>());
-			m3.push_back(vector <double>());
-			m4.push_back(vector <double>());
-		}
-		for (int j = 0; j < n; j++) {
-			if ((i < middle) && (j < middle)) {
-				m1[i].push_back(matrix[i][j]);
-			}
-			else if ((i < middle) && (j >= middle)) {
-				m2[i].push_back(matrix[i][j]);
-			}
-			else if ((i >= middle) && (j < middle)) {
-				m3[i % middle].push_back(matrix[i][j]);
-			}
-			else {
-				m4[i % middle].push_back(matrix[i][j]);
-			}
-		}
+		for (int j = 0; j < n; j++)
+			std::cout << M[i][j] << " ";
+		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 }
 
-vector <vector <double>> merge_matrix(vector <vector <double>> m1, vector <vector <double>> m2, vector <vector <double>> m3, vector <vector <double>> m4) {
-	vector <vector <double>> matrix;
-	int n = m1.size();
-
-	for (int i = 0; i < n; i++) {
-		matrix.push_back(vector<double>());
-		for (int j = 0; j < n; j++) {
-			matrix[i].push_back(m1[i][j]);
-		}
-	}
-
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			matrix[i].push_back(m2[i][j]);
-		}
-	}
-
-	for (int i = 0; i < n; i++) {
-		matrix.push_back(vector<double>());
-		for (int j = 0; j < n; j++) {
-			matrix[i + n].push_back(m3[i][j]);
-		}
-	}
-
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			matrix[i + n].push_back(m4[i][j]);
-		}
-	}
-
-	return matrix;
+double** add(double** M1, double** M2, int n) {
+	double** temp = initializeMatrix(n);
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			temp[i][j] = M1[i][j] + M2[i][j];
+	return temp;
 }
 
-vector <vector <double>> sum_matrix(vector<vector <double>> first_matrix, vector<vector <double>> second_matrix) {
-	int n = first_matrix.size();
-	vector <vector <double>> result_matrix;
-	for (int i = 0; i < n; i++) {
-		result_matrix.push_back(vector <double>());
-		for (int j = 0; j < n; j++) {
-			result_matrix[i].push_back(first_matrix[i][j] + second_matrix[i][j]);
-		}
-	}
-	return result_matrix;
+double** subtract(double** M1, double** M2, int n) {
+	double** temp = initializeMatrix(n);
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			temp[i][j] = M1[i][j] - M2[i][j];
+	return temp;
 }
 
-vector <vector <double>> diff_matrix(vector<vector <double>> first_matrix, vector<vector <double>> second_matrix) {
-	int n = first_matrix.size();
-	vector <vector <double>> result_matrix;
-	for (int i = 0; i < n; i++) {
-		result_matrix.push_back(vector <double>());
-		for (int j = 0; j < n; j++) {
-			result_matrix[i].push_back(first_matrix[i][j] - second_matrix[i][j]);
-		}
-	}
-	return result_matrix;
+double** strassenMultiply_Best(double** A, double** B, int n) {
+    if (n <= 64) {
+        double** C = initializeMatrix(n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                double sum = 0;
+                for (int k = 0; k < n; k++) {
+                    sum += A[i][k] * B[k][j];
+                }
+                C[i][j] = sum;
+            }
+        }
+        /*  double** C = initializeMatrix(1);
+          C[0][0] = A[0][0] * B[0][0];*/
+        return C;
+    }
+
+    /*if (n == 1) {
+
+          double** C = initializeMatrix(1);
+          C[0][0] = A[0][0] * B[0][0];
+        return C;
+    }*/
+    double** C = initializeMatrix(n);
+    int k = n / 2;
+
+    double** A11 = initializeMatrix(k);
+    double** A12 = initializeMatrix(k);
+    double** A21 = initializeMatrix(k);
+    double** A22 = initializeMatrix(k);
+    double** B11 = initializeMatrix(k);
+    double** B12 = initializeMatrix(k);
+    double** B21 = initializeMatrix(k);
+    double** B22 = initializeMatrix(k);
+
+    for (int i = 0; i < k; i++)
+        for (int j = 0; j < k; j++) {
+            A11[i][j] = A[i][j];
+            A12[i][j] = A[i][k + j];
+            A21[i][j] = A[k + i][j];
+            A22[i][j] = A[k + i][k + j];
+            B11[i][j] = B[i][j];
+            B12[i][j] = B[i][k + j];
+            B21[i][j] = B[k + i][j];
+            B22[i][j] = B[k + i][k + j];
+        }
+
+    //// double** P1 = strassenMultiply(A11, subtract(B12, B22, k), k);
+    //// double** P2 = strassenMultiply(add(A11, A12, k), B22, k);
+    //// double** P3 = strassenMultiply(add(A21, A22, k), B11, k);
+    //// double** P4 = strassenMultiply(A22, subtract(B21, B11, k), k);
+    //// double** P5 = strassenMultiply(add(A11, A22, k), add(B11, B22, k), k);
+    //// double** P6 = strassenMultiply(subtract(A12, A22, k), add(B21, B22, k), k);
+    //// double** P7 = strassenMultiply(subtract(A11, A21, k), add(B11, B12, k), k);
+
+    //// double** C11 = subtract(add(add(P5, P4, k), P6, k), P2, k);
+    //// double** C12 = add(P1, P2, k);
+    //// double** C21 = add(P3, P4, k);
+    //// double** C22 = subtract(subtract(add(P5, P1, k), P3, k), P7, k);
+
+
+    double** sub_p1 = subtract(B12, B22, k);
+    double** P1 = strassenMultiply_Best(A11, sub_p1, k);
+    for (int i = 0; i < k; i++) {
+        delete[] sub_p1[i];
+    }
+    delete[] sub_p1;
+
+    double** add_p2 = add(A11, A12, k);
+    double** P2 = strassenMultiply_Best(add_p2, B22, k);
+    for (int i = 0; i < k; i++) {
+        delete[] add_p2[i];
+    }
+    delete[] add_p2;
+
+
+    double** add_p3 = add(A21, A22, k);
+    double** P3 = strassenMultiply_Best(add_p3, B11, k);
+    for (int i = 0; i < k; i++) {
+        delete[] add_p3[i];
+    }
+    delete[] add_p3;
+
+
+    double** sub_p4 = subtract(B21, B11, k);
+    double** P4 = strassenMultiply_Best(A22, sub_p4, k);
+    for (int i = 0; i < k; i++) {
+        delete[] sub_p4[i];
+    }
+    delete[] sub_p4;
+
+    double** add_p5_1 = add(A11, A22, k);
+    double** add_p5_2 = add(B11, B22, k);
+    double** P5 = strassenMultiply_Best(add_p5_1, add_p5_2, k);
+    for (int i = 0; i < k; i++) {
+        delete[] add_p5_1[i];
+        delete[] add_p5_2[i];
+    }
+    delete[] add_p5_1;
+    delete[] add_p5_2;
+
+
+    double** sub_p6 = subtract(A12, A22, k);
+    double** add_p6 = add(B21, B22, k);
+    double** P6 = strassenMultiply_Best(sub_p6, add_p6, k);
+    for (int i = 0; i < k; i++) {
+        delete[] sub_p6[i];
+        delete[] add_p6[i];
+    }
+    delete[] sub_p6;
+    delete[] add_p6;
+
+
+    double** sub_p7 = subtract(A11, A21, k);
+    double** add_p7 = add(B11, B12, k);
+    double** P7 = strassenMultiply_Best(sub_p7, add_p7, k);
+    for (int i = 0; i < k; i++) {
+        delete[] sub_p7[i];
+        delete[] add_p7[i];
+    }
+    delete[] sub_p7;
+    delete[] add_p7;
+
+    double** C11_addadd = add(P5, P4, k);
+    double** C11_add = add(C11_addadd, P6, k);
+    for (int i = 0; i < k; i++) {
+        delete[] C11_addadd[i];
+    }
+    delete[] C11_addadd;
+
+    double** C11 = subtract(C11_add, P2, k);
+    for (int i = 0; i < k; i++) {
+        delete[] C11_add[i];
+    }
+    delete[] C11_add;
+
+
+
+    double** C12 = add(P1, P2, k);
+    double** C21 = add(P3, P4, k);
+
+    double** C22_subadd = add(P5, P1, k);
+    double** C22_sub = subtract(C22_subadd, P3, k);
+    double** C22 = subtract(subtract(add(P5, P1, k), P3, k), P7, k);
+
+    for (int i = 0; i < k; i++) {
+        delete[] C22_subadd[i];
+        delete[] C22_sub[i];
+    }
+    delete[] C22_subadd;
+    delete[] C22_sub;
+
+    for (int i = 0; i < k; i++)
+        for (int j = 0; j < k; j++) {
+            C[i][j] = C11[i][j];
+            C[i][j + k] = C12[i][j];
+            C[k + i][j] = C21[i][j];
+            C[k + i][k + j] = C22[i][j];
+        }
+
+    for (int i = 0; i < k; i++) {
+        delete[] A11[i];
+        delete[] A12[i];
+        delete[] A21[i];
+        delete[] A22[i];
+        delete[] B11[i];
+        delete[] B12[i];
+        delete[] B21[i];
+        delete[] B22[i];
+        delete[] P1[i];
+        delete[] P2[i];
+        delete[] P3[i];
+        delete[] P4[i];
+        delete[] P5[i];
+        delete[] P6[i];
+        delete[] P7[i];
+        delete[] C11[i];
+        delete[] C12[i];
+        delete[] C21[i];
+        delete[] C22[i];
+    }
+
+    delete[] A11;
+    delete[] A12;
+    delete[] A21;
+    delete[] A22;
+    delete[] B11;
+    delete[] B12;
+    delete[] B21;
+    delete[] B22;
+    delete[] P1;
+    delete[] P2;
+    delete[] P3;
+    delete[] P4;
+    delete[] P5;
+    delete[] P6;
+    delete[] P7;
+    delete[] C11;
+    delete[] C12;
+    delete[] C21;
+    delete[] C22;
+
+    return C;
 }
 
 
-vector <vector <double>> strassen_best(vector<vector <double>> first_matrix, vector<vector <double>> second_matrix, int n) {
-	if (n <= 64) {
-		vector <vector <double>> result_matrix;
-		for (int i = 0; i < n; i++) {
-			result_matrix.push_back(vector <double>());
-			for (int j = 0; j < n; j++) {
-				double sum = 0;
-				for (int k = 0; k < n; k++) {
-					sum += first_matrix[i][k] * second_matrix[k][j];
-				}
-				result_matrix[i].push_back(sum);
-			}
-		}
-		return result_matrix;
-	}
-
-	n = n >> 1;
-
-	vector<vector <double>> fm1;
-	vector<vector <double>> fm2;
-	vector<vector <double>> fm3;
-	vector<vector <double>> fm4;
-
-	vector<vector <double>> sm1;
-	vector<vector <double>> sm2;
-	vector<vector <double>> sm3;
-	vector<vector <double>> sm4;
-
-	split_matrix(first_matrix, fm1, fm2, fm3, fm4);
-	split_matrix(second_matrix, sm1, sm2, sm3, sm4);
-
-	vector<vector <double>> p1 = strassen_best(sum_matrix(fm1, fm4), sum_matrix(sm1, sm4), n);
-	vector<vector <double>> p2 = strassen_best(sum_matrix(fm3, fm4), sm1, n);
-	vector<vector <double>> p3 = strassen_best(fm1, diff_matrix(sm2, sm4), n);
-	vector<vector <double>> p4 = strassen_best(fm4, diff_matrix(sm3, sm1), n);
-	vector<vector <double>> p5 = strassen_best(sum_matrix(fm1, fm2), sm4, n);
-	vector<vector <double>> p6 = strassen_best(diff_matrix(fm3, fm1), sum_matrix(sm1, sm2), n);
-	vector<vector <double>> p7 = strassen_best(diff_matrix(fm2, fm4), sum_matrix(sm3, sm4), n);
-
-	vector<vector <double>> r1 = sum_matrix(sum_matrix(p1, p4), diff_matrix(p7, p5));
-	vector<vector <double>> r2 = sum_matrix(p3, p5);
-	vector<vector <double>> r3 = sum_matrix(p2, p4);
-	vector<vector <double>> r4 = sum_matrix(diff_matrix(p1, p2), sum_matrix(p3, p6));
-
-	return merge_matrix(r1, r2, r3, r4);
-}
-
-vector <vector <double>> strassen(vector<vector <double>> first_matrix, vector<vector <double>> second_matrix, int n) {
-     if (n == 2) {
-		vector <vector <double>> result_matrix;
-		for (int i = 0; i < n; i++) {
-			result_matrix.push_back(vector <double>());
-			for (int j = 0; j < n; j++) {
-				double sum = 0;
-				for (int k = 0; k < n; k++) {
-					sum += first_matrix[i][k] * second_matrix[k][j];
-				}
-				result_matrix[i].push_back(sum);
-			}
-		}
-		return result_matrix;
-	}
-
-	n = n >> 1;
-
-	vector<vector <double>> fm1;
-	vector<vector <double>> fm2;
-	vector<vector <double>> fm3;
-	vector<vector <double>> fm4;
-
-	vector<vector <double>> sm1;
-	vector<vector <double>> sm2;
-	vector<vector <double>> sm3;
-	vector<vector <double>> sm4;
-
-	split_matrix(first_matrix, fm1, fm2, fm3, fm4);
-	split_matrix(second_matrix, sm1, sm2, sm3, sm4);
-
-	vector<vector <double>> p1 = strassen(sum_matrix(fm1, fm4), sum_matrix(sm1, sm4), n);
-	vector<vector <double>> p2 = strassen(sum_matrix(fm3, fm4), sm1, n);
-	vector<vector <double>> p3 = strassen(fm1, diff_matrix(sm2, sm4), n);
-	vector<vector <double>> p4 = strassen(fm4, diff_matrix(sm3, sm1), n);
-	vector<vector <double>> p5 = strassen(sum_matrix(fm1, fm2), sm4, n);
-	vector<vector <double>> p6 = strassen(diff_matrix(fm3, fm1), sum_matrix(sm1, sm2), n);
-	vector<vector <double>> p7 = strassen(diff_matrix(fm2, fm4), sum_matrix(sm3, sm4), n);
-
-	vector<vector <double>> r1 = sum_matrix(sum_matrix(p1, p4), diff_matrix(p7, p5));
-	vector<vector <double>> r2 = sum_matrix(p3, p5);
-	vector<vector <double>> r3 = sum_matrix(p2, p4);
-	vector<vector <double>> r4 = sum_matrix(diff_matrix(p1, p2), sum_matrix(p3, p6));
-
-	return merge_matrix(r1, r2, r3, r4);
-}
-
-vector<vector <double>> remove_zeros(vector<vector <double>> matrix, int n) {
-	vector<vector <double>> result_matrix;
-
-	for (int i = 0; i < n; i++) {
-		result_matrix.push_back(vector <double>());
-		for (int j = 0; j < n; j++) {
-			result_matrix[i].push_back(matrix[i][j]);
-		}
-	}
-
-	return result_matrix;
-}
-
-vector<vector <double>> Start_Shtrassen(vector<vector <double>> A, vector<vector <double>> B) {
-	int old_size = A.size();
-
-	A = extend_matrix(A);
-	B = extend_matrix(B);
-
-	vector<vector <double>> C = strassen(A, B, A.size());
-
-	return remove_zeros(C, old_size);
-}
-void Start_Shtrassen(string inp, string out )
-{	    
-		ifstream fin(inp);
-		int n;
-		fin >> n;
-		ofstream fout(out);
-
-		vector <vector <double>> A;
-		vector <vector <double>> B;
-
-		for (int i = 0; i < n; i++) {
-			A.push_back(vector <double>());
-			for (int j = 0; j < n; j++) {
-				double x;
-				fin >> x;
-				A[i].push_back(x);
-			}
-		}
-
-		for (int i = 0; i < n; i++) {
-			B.push_back(vector <double>());
-			for (int j = 0; j < n; j++) {
-				double x;
-				fin >> x;
-				B[i].push_back(x);
-			}
-		}
-
-		vector <vector <double>> C = Start_Shtrassen(A, B);
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				fout << C[i][j] << " ";
-			}
-			fout << endl;
-		}
-		fin.close();
-		fout.close();
-}
-vector<vector <double>> Start_ShtrassenBest(vector<vector <double>> A, vector<vector <double>> B) {
-	int old_size = A.size();
-
-	A = extend_matrix(A);
-	B = extend_matrix(B);
-
-	vector<vector <double>> C = strassen_best(A, B, A.size());
-
-	return remove_zeros(C, old_size);
-}
 void Start_ShtrassenBest(string inp, string out)
 {
+
 	ifstream fin(inp);
-	int n;
-	fin >> n;
 	ofstream fout(out);
-
-	vector <vector <double>> A;
-	vector <vector <double>> B;
-
+	int n;
+	int n_old;
+	fin >> n;
+	n_old = n;
+	n = pow(2, ceil(log2(n)));
+	double** A = initializeMatrix(n);
+	double** B = initializeMatrix(n);
 	for (int i = 0; i < n; i++) {
-		A.push_back(vector <double>());
 		for (int j = 0; j < n; j++) {
-			double x;
-			fin >> x;
-			A[i].push_back(x);
+			A[i][j] = 0;
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			B[i][j] = 0;
+		}
+	}
+	for (int i = 0; i < n_old; i++) {
+		for (int j = 0; j < n_old; j++) {
+			double var;
+			fin >> var;
+			A[i][j] = var;
+		}
+	}
+	for (int i = 0; i < n_old; i++) {
+		for (int j = 0; j < n_old; j++) {
+			double var;
+			fin >> var;
+			B[i][j] = var;
 		}
 	}
 
+
+	double** C = initializeMatrix(n);
 	for (int i = 0; i < n; i++) {
-		B.push_back(vector <double>());
 		for (int j = 0; j < n; j++) {
-			double x;
-			fin >> x;
-			B[i].push_back(x);
+			C[i][j] = 0;
+		}
+	}
+	C = strassenMultiply_Best(A, B, n);
+	double** ANSWER = initializeMatrix(n_old);
+	for (int i = 0; i < n_old; i++) {
+		for (int j = 0; j < n_old; j++) {
+			ANSWER[i][j] = C[i][j];
 		}
 	}
 
-	vector <vector <double>> C = Start_ShtrassenBest(A, B);
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			fout << C[i][j] << " ";
+	for (int i = 0; i < n_old; i++) {
+		for (int j = 0; j < n_old; j++) {
+			fout << ANSWER[i][j] << " ";
 		}
 		fout << endl;
 	}
 	fin.close();
 	fout.close();
+	for (int i = 0; i < n_old; i++)
+		delete[] ANSWER[i];
+	delete[] ANSWER;
+
+	for (int i = 0; i < n; i++)
+		delete[] A[i];
+	delete[] A;
+
+	for (int i = 0; i < n; i++)
+		delete[] B[i];
+	delete[] B;
+
+	for (int i = 0; i < n; i++)
+		delete[] C[i];
+	delete[] C;
+}
+double** strassenMultiply(double** A, double** B, int n) {
+    //if (n <= 64) {
+    //    double** C = initializeMatrix(n);
+    //    for (int i = 0; i < n; i++) {
+    //        for (int j = 0; j < n; j++) {
+    //            double sum = 0;
+    //            for (int k = 0; k < n; k++) {
+    //                sum += A[i][k] * B[k][j];
+    //            }
+    //            C[i][j] = sum;
+    //        }
+    //    }
+    //    /*  double** C = initializeMatrix(1);
+    //      C[0][0] = A[0][0] * B[0][0];*/
+    //    return C;
+    //}
+
+    if (n == 1) {
+
+          double** C = initializeMatrix(1);
+          C[0][0] = A[0][0] * B[0][0];
+        return C;
+    }
+    double** C = initializeMatrix(n);
+    int k = n / 2;
+
+    double** A11 = initializeMatrix(k);
+    double** A12 = initializeMatrix(k);
+    double** A21 = initializeMatrix(k);
+    double** A22 = initializeMatrix(k);
+    double** B11 = initializeMatrix(k);
+    double** B12 = initializeMatrix(k);
+    double** B21 = initializeMatrix(k);
+    double** B22 = initializeMatrix(k);
+
+    for (int i = 0; i < k; i++)
+        for (int j = 0; j < k; j++) {
+            A11[i][j] = A[i][j];
+            A12[i][j] = A[i][k + j];
+            A21[i][j] = A[k + i][j];
+            A22[i][j] = A[k + i][k + j];
+            B11[i][j] = B[i][j];
+            B12[i][j] = B[i][k + j];
+            B21[i][j] = B[k + i][j];
+            B22[i][j] = B[k + i][k + j];
+        }
+
+    //// double** P1 = strassenMultiply(A11, subtract(B12, B22, k), k);
+    //// double** P2 = strassenMultiply(add(A11, A12, k), B22, k);
+    //// double** P3 = strassenMultiply(add(A21, A22, k), B11, k);
+    //// double** P4 = strassenMultiply(A22, subtract(B21, B11, k), k);
+    //// double** P5 = strassenMultiply(add(A11, A22, k), add(B11, B22, k), k);
+    //// double** P6 = strassenMultiply(subtract(A12, A22, k), add(B21, B22, k), k);
+    //// double** P7 = strassenMultiply(subtract(A11, A21, k), add(B11, B12, k), k);
+
+    //// double** C11 = subtract(add(add(P5, P4, k), P6, k), P2, k);
+    //// double** C12 = add(P1, P2, k);
+    //// double** C21 = add(P3, P4, k);
+    //// double** C22 = subtract(subtract(add(P5, P1, k), P3, k), P7, k);
+
+
+    double** sub_p1 = subtract(B12, B22, k);
+    double** P1 = strassenMultiply(A11, sub_p1, k);
+    for (int i = 0; i < k; i++) {
+        delete[] sub_p1[i];
+    }
+    delete[] sub_p1;
+
+    double** add_p2 = add(A11, A12, k);
+    double** P2 = strassenMultiply(add_p2, B22, k);
+    for (int i = 0; i < k; i++) {
+        delete[] add_p2[i];
+    }
+    delete[] add_p2;
+
+
+    double** add_p3 = add(A21, A22, k);
+    double** P3 = strassenMultiply(add_p3, B11, k);
+    for (int i = 0; i < k; i++) {
+        delete[] add_p3[i];
+    }
+    delete[] add_p3;
+
+
+    double** sub_p4 = subtract(B21, B11, k);
+    double** P4 = strassenMultiply(A22, sub_p4, k);
+    for (int i = 0; i < k; i++) {
+        delete[] sub_p4[i];
+    }
+    delete[] sub_p4;
+
+    double** add_p5_1 = add(A11, A22, k);
+    double** add_p5_2 = add(B11, B22, k);
+    double** P5 = strassenMultiply(add_p5_1, add_p5_2, k);
+    for (int i = 0; i < k; i++) {
+        delete[] add_p5_1[i];
+        delete[] add_p5_2[i];
+    }
+    delete[] add_p5_1;
+    delete[] add_p5_2;
+
+
+    double** sub_p6 = subtract(A12, A22, k);
+    double** add_p6 = add(B21, B22, k);
+    double** P6 = strassenMultiply(sub_p6, add_p6, k);
+    for (int i = 0; i < k; i++) {
+        delete[] sub_p6[i];
+        delete[] add_p6[i];
+    }
+    delete[] sub_p6;
+    delete[] add_p6;
+
+
+    double** sub_p7 = subtract(A11, A21, k);
+    double** add_p7 = add(B11, B12, k);
+    double** P7 = strassenMultiply(sub_p7, add_p7, k);
+    for (int i = 0; i < k; i++) {
+        delete[] sub_p7[i];
+        delete[] add_p7[i];
+    }
+    delete[] sub_p7;
+    delete[] add_p7;
+
+    double** C11_addadd = add(P5, P4, k);
+    double** C11_add = add(C11_addadd, P6, k);
+    for (int i = 0; i < k; i++) {
+        delete[] C11_addadd[i];
+    }
+    delete[] C11_addadd;
+
+    double** C11 = subtract(C11_add, P2, k);
+    for (int i = 0; i < k; i++) {
+        delete[] C11_add[i];
+    }
+    delete[] C11_add;
+
+
+
+    double** C12 = add(P1, P2, k);
+    double** C21 = add(P3, P4, k);
+
+    double** C22_subadd = add(P5, P1, k);
+    double** C22_sub = subtract(C22_subadd, P3, k);
+    double** C22 = subtract(C22_sub, P7, k);
+
+    for (int i = 0; i < k; i++) {
+        delete[] C22_subadd[i];
+        delete[] C22_sub[i];
+    }
+    delete[] C22_subadd;
+    delete[] C22_sub;
+
+    for (int i = 0; i < k; i++)
+        for (int j = 0; j < k; j++) {
+            C[i][j] = C11[i][j];
+            C[i][j + k] = C12[i][j];
+            C[k + i][j] = C21[i][j];
+            C[k + i][k + j] = C22[i][j];
+        }
+
+    for (int i = 0; i < k; i++) {
+        delete[] A11[i];
+        delete[] A12[i];
+        delete[] A21[i];
+        delete[] A22[i];
+        delete[] B11[i];
+        delete[] B12[i];
+        delete[] B21[i];
+        delete[] B22[i];
+        delete[] P1[i];
+        delete[] P2[i];
+        delete[] P3[i];
+        delete[] P4[i];
+        delete[] P5[i];
+        delete[] P6[i];
+        delete[] P7[i];
+        delete[] C11[i];
+        delete[] C12[i];
+        delete[] C21[i];
+        delete[] C22[i];
+    }
+
+    delete[] A11;
+    delete[] A12;
+    delete[] A21;
+    delete[] A22;
+    delete[] B11;
+    delete[] B12;
+    delete[] B21;
+    delete[] B22;
+    delete[] P1;
+    delete[] P2;
+    delete[] P3;
+    delete[] P4;
+    delete[] P5;
+    delete[] P6;
+    delete[] P7;
+    delete[] C11;
+    delete[] C12;
+    delete[] C21;
+    delete[] C22;
+
+    return C;
+}
+
+void Start_Shtrassen(string inp, string out)
+{
+
+    ifstream fin(inp);
+    ofstream fout(out);
+    int n;
+    int n_old;
+    fin >> n;
+    n_old = n;
+    n = pow(2, ceil(log2(n)));
+    double** A = initializeMatrix(n);
+    double** B = initializeMatrix(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            A[i][j] = 0;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            B[i][j] = 0;
+        }
+    }
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            double var;
+            fin >> var;
+            A[i][j] = var;
+        }
+    }
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            double var;
+            fin >> var;
+            B[i][j] = var;
+        }
+    }
+
+
+    double** C = initializeMatrix(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            C[i][j] = 0;
+        }
+    }
+    C = strassenMultiply(A, B, n);
+    double** ANSWER = initializeMatrix(n_old);
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            ANSWER[i][j] = C[i][j];
+        }
+    }
+
+    for (int i = 0; i < n_old; i++) {
+        for (int j = 0; j < n_old; j++) {
+            fout << ANSWER[i][j] << " ";
+        }
+        fout << endl;
+    }
+    fin.close();
+    fout.close();
+    for (int i = 0; i < n_old; i++)
+        delete[] ANSWER[i];
+    delete[] ANSWER;
+
+    for (int i = 0; i < n; i++)
+        delete[] A[i];
+    delete[] A;
+
+    for (int i = 0; i < n; i++)
+        delete[] B[i];
+    delete[] B;
+
+    for (int i = 0; i < n; i++)
+        delete[] C[i];
+    delete[] C;
 }

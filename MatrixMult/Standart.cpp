@@ -32,6 +32,7 @@ vector<vector <double>> mul_matrix(const vector <vector <double>>& first_matrix,
 }
 
 void Start_Standart(string in, string out) {
+
 	ifstream fin(in);
 	ofstream fout(out);
 	int n;

@@ -54,16 +54,18 @@ void OutGen() {
     }
 }
 void CorrectTests() {
-    string inp = "standart.txt";
+    string inp = "strassen64.txt";
     string out = "correct_" + inp;
-    int n = 64;
+    int n = 100;
     ifstream fin(inp);
     ofstream fout(out);
     std::vector<std::pair<int, double>> vec;
     for (int i = 0; i < n;i++) {
         int num;
         double time;
-        fin >> num;
+        if (!(fin >> num)) {
+            break;
+        }
         fin >> time;
         vec.push_back(std::make_pair(num, time));
     }
